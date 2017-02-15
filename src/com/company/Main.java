@@ -9,44 +9,22 @@ import scala.Option;
 import scala.collection.JavaConversions;
 
 import java.io.*;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Arrays;
 
 public class Main {
 
-    public static void method() {
-        String productName = "Бумага офисная"; //Наименование товара (строка) - обязательное поле
-        productName = productName.replace(" ", "%20");
-        String regionsString = Arrays.toString(new Integer[]{12, 57, 77});//Список регионов - необязательное поле - может быть несколько
-        String ocpd2CodesString =  Arrays.toString(new String[]{"17.12.14.160", "17.12.14.162"});//Коды по классификатору ОКПД2 - необязательное поле - может быть несколько
-        //measure = enc2utf8 //Мера измерения - необязательное поле
-        try {
-            String urlString = "http:127.0.0.1:5469/get_closest?name=[" + productName + "]&okdp=" + ocpd2CodesString + "&regions=" + regionsString;
-            URL url = new URL(urlString);
-            URLConnection conn = url.openConnection();
-            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                System.out.println(inputLine);
-            in.close();
-        }
-        catch (IOException e)
-        {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    private final static MyStem mystemAnalyzer =
-            new Factory("-igd --eng-gr --format json --weight")
-                    .newMyStem("3.0", Option.<File>empty()).get();
+    private final static MyStem mystemAnalyzer = new Factory("-igd --eng-gr --format json --weight").newMyStem("3.0", Option.<File>empty()).get();
 
     public static void main(final String[] args) throws MyStemApplicationException {
-
+        String productName = "соленая"; //Product name
+        productName = productName.replace(" ", "%20");
+        String regionsString = Arrays.toString(new Integer[]{12, 57, 77});//Regions list
+        String ocpd2CodesString = Arrays.toString(new String[]{"17.12.14.160", "17.12.14.162"});//OCPD2 classificator codes
+        //measure = enc2utf8 //measure
         final Iterable<Info> result =
                 JavaConversions.asJavaIterable(
                         mystemAnalyzer
-                                .analyze(Request.apply("И вырвал грешный мой язык"))
+                                .analyze(Request.apply(productName))
                                 .info()
                                 .toIterable());
 
