@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: ru.stachek66.nlp:mystem-scala:0.1.4">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/ru/stachek66/nlp/mystem-scala/0.1.4/mystem-scala-0.1.4.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/ru/stachek66/nlp/mystem-scala/0.1.4/mystem-scala-0.1.4-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/ru/stachek66/nlp/mystem-scala/0.1.4/mystem-scala-0.1.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
