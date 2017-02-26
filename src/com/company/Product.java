@@ -11,8 +11,9 @@ class Product extends FileType{
     Double price;
     String link;
     Integer id;
+    String revOKPD;
 
-    Product(Integer id, String productName, String regionsString, String measure, String date, String ocpd2CodesString, Double price, String link) {
+    Product(String date, String ocpd2CodesString, String productName, String measure, Double price,  Integer id,  String regionsString, String link, String revOKPD) {
         this.id = id;
         this.productName = replacer(productName);
         this.regionsString = regionsString;
@@ -21,6 +22,7 @@ class Product extends FileType{
         this.ocpd2CodesString = ocpd2CodesString;
         this.price = price;
         this.link = link;
+        this.revOKPD = revOKPD;
     }
 
 

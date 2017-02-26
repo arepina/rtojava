@@ -12,26 +12,26 @@ import scala.collection.JavaConversions;
 import java.io.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Main {
 
     private final static MyStem mystemAnalyzer = new Factory("-igd --eng-gr --format json --weight").newMyStem("3.0", Option.<File>empty()).get();
 
     public static void main(final String[] args) throws MyStemApplicationException, IOException, SQLException, ClassNotFoundException {
-        ArrayList<FileType> dfmList = new ArrayList<FileType>();
-        ReadCSV.read("../nmzk/data/dfm.csv", dfmList, "dfm");
-        ArrayList<FileType> productList = new ArrayList<FileType>();
-        ReadCSV.read("../nmzk/data/products.csv", productList, "products");
+        DB db = new DB();
+        db.connectDb();
+        Product product = db.getProduct(118583781);
 
-        Product product = new Product(0, "соленая белый полки", Arrays.toString(new Integer[]{12, 57, 77}),
-                "", "", Arrays.toString(new String[]{"17.12.14.160", "17.12.14.162"}),
-                0.0, "" );
+//        ArrayList<FileType> dfmList = new ArrayList<FileType>();
+//        ReadCSV.read("../nmzk/data/dfm.csv", dfmList, "dfm");
+//        ArrayList<FileType> productList = new ArrayList<FileType>();
+//        ReadCSV.read("../nmzk/data/products.csv", productList, "products");
+//        Product product = new Product("", Arrays.toString(new Integer[]{12, 57, 77}), "соленая белый полки",
+//                "", 0.0, 0, Arrays.toString(new String[]{"17.12.14.160", "17.12.14.162"}), "", "");
 
         Iterable<Info> result =
                 JavaConversions.asJavaIterable(
-                                mystemAnalyzer
+                        mystemAnalyzer
                                 .analyze(Request.apply(product.productName))
                                 .info()
                                 .toIterable());
@@ -39,7 +39,7 @@ public class Main {
         Info firstNoun = null;
         ArrayList<String> lemmatizedArray = new ArrayList<String>();
         for (final Info info : result) {
-            JSONObject jObject  = new JSONObject(info.rawResponse());
+            JSONObject jObject = new JSONObject(info.rawResponse());
             String analysis = jObject.get("analysis").toString();
             analysis = analysis.replace("[", "");
             analysis = analysis.replace("]", "");
@@ -53,7 +53,6 @@ public class Main {
 
         double y = 0.5;
     }
-
 
 
 }
