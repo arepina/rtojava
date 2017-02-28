@@ -22,13 +22,6 @@ public class Main {
         db.connectDb();
         Product product = db.getProduct(118583781);
 
-//        ArrayList<FileType> dfmList = new ArrayList<FileType>();
-//        ReadCSV.read("../nmzk/data/dfm.csv", dfmList, "dfm");
-//        ArrayList<FileType> productList = new ArrayList<FileType>();
-//        ReadCSV.read("../nmzk/data/products.csv", productList, "products");
-//        Product product = new Product("", Arrays.toString(new Integer[]{12, 57, 77}), "соленая белый полки",
-//                "", 0.0, 0, Arrays.toString(new String[]{"17.12.14.160", "17.12.14.162"}), "", "");
-
         Iterable<Info> result =
                 JavaConversions.asJavaIterable(
                         mystemAnalyzer
@@ -36,6 +29,13 @@ public class Main {
                                 .info()
                                 .toIterable());
 
+        ArrayList<String> lemmatizedArray = formLemmatizedArray(result);
+
+        double y = 0.5;
+    }
+
+    private static ArrayList<String> formLemmatizedArray(Iterable<Info> result)
+    {
         Info firstNoun = null;
         ArrayList<String> lemmatizedArray = new ArrayList<String>();
         for (final Info info : result) {
@@ -50,9 +50,7 @@ public class Main {
             lemmatizedArray.add(info.lex().toString().substring(5, info.lex().toString().length() - 1));
         }
         System.out.println(firstNoun);
-
-        double y = 0.5;
+        return lemmatizedArray;
     }
-
 
 }

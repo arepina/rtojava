@@ -9,7 +9,9 @@ class DB {
     Connection connectDb() {
         try {
             Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:/Users/anastasia/Documents/nmzk/data/Products.db");
+            conn = DriverManager.getConnection("jdbc:sqlite:../nmzk/data/Products.db");
+//            Statement statement = conn.createStatement();
+//            ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM Products");
             return conn;
 
         } catch (Exception e) {
@@ -28,4 +30,6 @@ class DB {
                 resultSet.getString("rev_okpd"));
 
     }
+
+
 }
