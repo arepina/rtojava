@@ -26,7 +26,7 @@ class Product extends FileType{
     }
 
 
-    private static String replacer(String item) {
+    static String replacer(String item) {
         item = item.replaceAll("\"", "");
         item = item.replaceAll("(\\d)(\\D)", "\\1\\ \\2");
         item = item.replaceAll("(\\D)(\\d)", "\\1\\ \\2");

@@ -13,16 +13,16 @@ class FileType {
 
 class ReadCSV {
 
-    static void read(String csvFile, List<FileType> items, String className) {
+    static ArrayList<String> read(String csvFile, List<FileType> items, String className) {
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ",";
-        List<String> headers = new ArrayList<String>();
+        ArrayList<String> headers = new ArrayList<String>();
         try {
             br = new BufferedReader(new FileReader(csvFile));
             while ((line = br.readLine()) != null) {
                 if (headers.size() == 0)
-                    headers.addAll(Arrays.asList(line.split(cvsSplitBy)));
+                    headers.addAll(Arrays.asList(line.replace("\"", "").split(cvsSplitBy)));
                 else {
                     String[] data = line.replace("\"", "").split(cvsSplitBy);
                     FileType ob = null;
@@ -31,26 +31,19 @@ class ReadCSV {
                         values.addAll(Arrays.asList(data));
                         while (values.size() != 9)
                             values.add("");
-                        try
-                        {
+                        try {
                             double k = Double.parseDouble(data[4]);
-                        }
-                        catch (Exception e)
-                        {
+                        } catch (Exception e) {
                             values.set(4, "0.0");
                         }
-                        try
-                        {
+                        try {
                             int k = Integer.parseInt(data[5]);
-                        }
-                        catch (Exception e)
-                        {
+                        } catch (Exception e) {
                             values.set(5, "0");
                         }
                         ob = new Product(values.get(0), values.get(1), values.get(2), values.get(3), Double.parseDouble(values.get(4)), Integer.parseInt(values.get(5)), values.get(6), values.get(7), values.get(8));
-                    }
-                    else
-                        ob = new DFM();
+                    } else
+                        ob = new DFM(data);
                     items.add(ob);
                 }
             }
@@ -67,5 +60,18 @@ class ReadCSV {
                 }
             }
         }
+        return headers;
+    }
+
+    static Integer[][] formMatrix(List<FileType> items)
+    {
+        Integer matrix[][]= new Integer[items.size()][((DFM)items.get(0)).data.length];
+        for(int i = 0; i < items.size(); i++) {
+            for(int j = 0; j < ((DFM)items.get(0)).data.length; j++) {
+                matrix[i][j] = ((DFM)items.get(i)).data[j];
+            }
+            System.out.println(" ]");
+        }
+        return matrix;
     }
 }
