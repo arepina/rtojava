@@ -1,5 +1,6 @@
 package com.company;
 
+import javafx.util.Pair;
 import org.json.JSONObject;
 import ru.stachek66.nlp.mystem.holding.Factory;
 import ru.stachek66.nlp.mystem.holding.MyStem;
@@ -33,8 +34,6 @@ public class Main {
         processRequest(request, firstNoun, lemmatizedArray);
 
         workWithDTM(request, firstNoun);
-
-        //Product product = db.getProduct(118583781);
 
 
     }
@@ -108,12 +107,30 @@ public class Main {
     }
 
     private static void calculateCos(ArrayList<Integer> nonZeroRows, Integer[][] matrix, double y) {
-        List<Double> cosineValues = new ArrayList<>();
+        List<Pair<Integer, Double>> cosineValues = new ArrayList<>();
+        List<Integer> productID = new ArrayList<>();
         for (Integer row : nonZeroRows) {
             //todo form the vector for a row and calc the cosineSimilarity(int[] vectorA, int[] vectorB)
-            cosineValues.add(cosineSimilarity(vectA, vectB));
+            cosineValues.add(row, cosineSimilarity(vectA, vectB));
         }
-        List<Double> cosineValuesFiltered = cosineValues.stream().filter(c -> c > y).collect(toList());
+        List<Pair<Integer, Double>> cosineValuesFiltered = cosineValues.stream().filter(c -> c.getValue() > y).collect(toList());
+        for(Pair<Integer, Double> row : cosineValuesFiltered)
+            productID.add(matrix[0][row.getKey()]);
+        processProductIDs(productID, cosineValuesFiltered);
+    }
+
+    private static void processProductIDs(List<Integer> productID, List<Pair<Integer, Double>> cosineValuesFiltered) {
+        List<Product> products = new ArrayList<>();
+        for(Integer id : productID)
+        {
+            try {
+                Product p = db.getProduct(id);
+                products.add(p);
+            } catch (SQLException e) {
+                e.printStackTrace();
+                throw new IllegalStateException("Error in DB of products");
+            }
+        }
     }
 
 

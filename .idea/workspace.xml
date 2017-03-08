@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d72b3fc-5761-4578-b5b2-545328cb699f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rtojava.iml" afterPath="$PROJECT_DIR$/rtojava.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
     </list>
     <ignored path="rtojava.iws" />
@@ -30,19 +26,19 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="101" column="62" lean-forward="false" selection-start-line="101" selection-start-column="62" selection-end-line="101" selection-end-column="62" />
+            <state relative-caret-position="300">
+              <caret line="127" column="31" lean-forward="false" selection-start-line="127" selection-start-column="31" selection-end-line="127" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#787#793#0" expanded="true" />
-                <element signature="e#1339#1349#0" expanded="true" />
-                <element signature="e#2223#2231#0" expanded="true" />
+                <element signature="e#812#818#0" expanded="true" />
+                <element signature="e#1309#1319#0" expanded="true" />
+                <element signature="e#2193#2201#0" expanded="true" />
                 <element signature="method#findNonZeroRows#0;class#Main#0" expanded="false" />
-                <element signature="e#5029#5046#0" expanded="true" />
-                <element signature="e#5529#5557#0" expanded="true" />
-                <element signature="e#5924#5933#0" expanded="true" />
-                <element signature="e#6343#6361#0" expanded="true" />
-                <element signature="e#6771#6780#0" expanded="true" />
+                <element signature="e#5770#5787#0" expanded="true" />
+                <element signature="e#6270#6298#0" expanded="true" />
+                <element signature="e#6665#6674#0" expanded="true" />
+                <element signature="e#7084#7102#0" expanded="true" />
+                <element signature="e#7512#7521#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -760,12 +756,12 @@
       <workItem from="1488790541141" duration="110000" />
       <workItem from="1488813689842" duration="4033000" />
       <workItem from="1488826277300" duration="2841000" />
-      <workItem from="1488990978975" duration="1140000" />
+      <workItem from="1488990978975" duration="1682000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12260000" />
+    <option name="totallyTimeSpent" value="12802000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -856,15 +852,15 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#787#793#0" expanded="true" />
-            <element signature="e#1339#1349#0" expanded="true" />
-            <element signature="e#2223#2231#0" expanded="true" />
+            <element signature="e#812#818#0" expanded="true" />
+            <element signature="e#1309#1319#0" expanded="true" />
+            <element signature="e#2193#2201#0" expanded="true" />
             <element signature="method#findNonZeroRows#0;class#Main#0" expanded="false" />
-            <element signature="e#5029#5046#0" expanded="true" />
-            <element signature="e#5529#5557#0" expanded="true" />
-            <element signature="e#5924#5933#0" expanded="true" />
-            <element signature="e#6343#6361#0" expanded="true" />
-            <element signature="e#6771#6780#0" expanded="true" />
+            <element signature="e#5770#5787#0" expanded="true" />
+            <element signature="e#6270#6298#0" expanded="true" />
+            <element signature="e#6665#6674#0" expanded="true" />
+            <element signature="e#7084#7102#0" expanded="true" />
+            <element signature="e#7512#7521#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -913,15 +909,15 @@
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#787#793#0" expanded="true" />
-            <element signature="e#1339#1349#0" expanded="true" />
-            <element signature="e#2223#2231#0" expanded="true" />
+            <element signature="e#812#818#0" expanded="true" />
+            <element signature="e#1309#1319#0" expanded="true" />
+            <element signature="e#2193#2201#0" expanded="true" />
             <element signature="method#findNonZeroRows#0;class#Main#0" expanded="false" />
-            <element signature="e#5029#5046#0" expanded="true" />
-            <element signature="e#5529#5557#0" expanded="true" />
-            <element signature="e#5924#5933#0" expanded="true" />
-            <element signature="e#6343#6361#0" expanded="true" />
-            <element signature="e#6771#6780#0" expanded="true" />
+            <element signature="e#5770#5787#0" expanded="true" />
+            <element signature="e#6270#6298#0" expanded="true" />
+            <element signature="e#6665#6674#0" expanded="true" />
+            <element signature="e#7084#7102#0" expanded="true" />
+            <element signature="e#7512#7521#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -955,15 +951,15 @@
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#787#793#0" expanded="true" />
-            <element signature="e#1339#1349#0" expanded="true" />
-            <element signature="e#2223#2231#0" expanded="true" />
+            <element signature="e#812#818#0" expanded="true" />
+            <element signature="e#1309#1319#0" expanded="true" />
+            <element signature="e#2193#2201#0" expanded="true" />
             <element signature="method#findNonZeroRows#0;class#Main#0" expanded="false" />
-            <element signature="e#5029#5046#0" expanded="true" />
-            <element signature="e#5529#5557#0" expanded="true" />
-            <element signature="e#5924#5933#0" expanded="true" />
-            <element signature="e#6343#6361#0" expanded="true" />
-            <element signature="e#6771#6780#0" expanded="true" />
+            <element signature="e#5770#5787#0" expanded="true" />
+            <element signature="e#6270#6298#0" expanded="true" />
+            <element signature="e#6665#6674#0" expanded="true" />
+            <element signature="e#7084#7102#0" expanded="true" />
+            <element signature="e#7512#7521#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -997,15 +993,15 @@
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#787#793#0" expanded="true" />
-            <element signature="e#1339#1349#0" expanded="true" />
-            <element signature="e#2223#2231#0" expanded="true" />
+            <element signature="e#812#818#0" expanded="true" />
+            <element signature="e#1309#1319#0" expanded="true" />
+            <element signature="e#2193#2201#0" expanded="true" />
             <element signature="method#findNonZeroRows#0;class#Main#0" expanded="false" />
-            <element signature="e#5029#5046#0" expanded="true" />
-            <element signature="e#5529#5557#0" expanded="true" />
-            <element signature="e#5924#5933#0" expanded="true" />
-            <element signature="e#6343#6361#0" expanded="true" />
-            <element signature="e#6771#6780#0" expanded="true" />
+            <element signature="e#5770#5787#0" expanded="true" />
+            <element signature="e#6270#6298#0" expanded="true" />
+            <element signature="e#6665#6674#0" expanded="true" />
+            <element signature="e#7084#7102#0" expanded="true" />
+            <element signature="e#7512#7521#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1039,15 +1035,15 @@
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#787#793#0" expanded="true" />
-            <element signature="e#1339#1349#0" expanded="true" />
-            <element signature="e#2223#2231#0" expanded="true" />
+            <element signature="e#812#818#0" expanded="true" />
+            <element signature="e#1309#1319#0" expanded="true" />
+            <element signature="e#2193#2201#0" expanded="true" />
             <element signature="method#findNonZeroRows#0;class#Main#0" expanded="false" />
-            <element signature="e#5029#5046#0" expanded="true" />
-            <element signature="e#5529#5557#0" expanded="true" />
-            <element signature="e#5924#5933#0" expanded="true" />
-            <element signature="e#6343#6361#0" expanded="true" />
-            <element signature="e#6771#6780#0" expanded="true" />
+            <element signature="e#5770#5787#0" expanded="true" />
+            <element signature="e#6270#6298#0" expanded="true" />
+            <element signature="e#6665#6674#0" expanded="true" />
+            <element signature="e#7084#7102#0" expanded="true" />
+            <element signature="e#7512#7521#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1081,15 +1077,15 @@
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#787#793#0" expanded="true" />
-            <element signature="e#1339#1349#0" expanded="true" />
-            <element signature="e#2223#2231#0" expanded="true" />
+            <element signature="e#812#818#0" expanded="true" />
+            <element signature="e#1309#1319#0" expanded="true" />
+            <element signature="e#2193#2201#0" expanded="true" />
             <element signature="method#findNonZeroRows#0;class#Main#0" expanded="false" />
-            <element signature="e#5029#5046#0" expanded="true" />
-            <element signature="e#5529#5557#0" expanded="true" />
-            <element signature="e#5924#5933#0" expanded="true" />
-            <element signature="e#6343#6361#0" expanded="true" />
-            <element signature="e#6771#6780#0" expanded="true" />
+            <element signature="e#5770#5787#0" expanded="true" />
+            <element signature="e#6270#6298#0" expanded="true" />
+            <element signature="e#6665#6674#0" expanded="true" />
+            <element signature="e#7084#7102#0" expanded="true" />
+            <element signature="e#7512#7521#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1123,15 +1119,15 @@
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#787#793#0" expanded="true" />
-            <element signature="e#1339#1349#0" expanded="true" />
-            <element signature="e#2223#2231#0" expanded="true" />
+            <element signature="e#812#818#0" expanded="true" />
+            <element signature="e#1309#1319#0" expanded="true" />
+            <element signature="e#2193#2201#0" expanded="true" />
             <element signature="method#findNonZeroRows#0;class#Main#0" expanded="false" />
-            <element signature="e#5029#5046#0" expanded="true" />
-            <element signature="e#5529#5557#0" expanded="true" />
-            <element signature="e#5924#5933#0" expanded="true" />
-            <element signature="e#6343#6361#0" expanded="true" />
-            <element signature="e#6771#6780#0" expanded="true" />
+            <element signature="e#5770#5787#0" expanded="true" />
+            <element signature="e#6270#6298#0" expanded="true" />
+            <element signature="e#6665#6674#0" expanded="true" />
+            <element signature="e#7084#7102#0" expanded="true" />
+            <element signature="e#7512#7521#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1164,15 +1160,15 @@
           <caret line="19" column="135" lean-forward="true" selection-start-line="19" selection-start-column="135" selection-end-line="19" selection-end-column="135" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#787#793#0" expanded="true" />
-            <element signature="e#1339#1349#0" expanded="true" />
-            <element signature="e#2223#2231#0" expanded="true" />
+            <element signature="e#812#818#0" expanded="true" />
+            <element signature="e#1309#1319#0" expanded="true" />
+            <element signature="e#2193#2201#0" expanded="true" />
             <element signature="method#findNonZeroRows#0;class#Main#0" expanded="false" />
-            <element signature="e#5029#5046#0" expanded="true" />
-            <element signature="e#5529#5557#0" expanded="true" />
-            <element signature="e#5924#5933#0" expanded="true" />
-            <element signature="e#6343#6361#0" expanded="true" />
-            <element signature="e#6771#6780#0" expanded="true" />
+            <element signature="e#5770#5787#0" expanded="true" />
+            <element signature="e#6270#6298#0" expanded="true" />
+            <element signature="e#6665#6674#0" expanded="true" />
+            <element signature="e#7084#7102#0" expanded="true" />
+            <element signature="e#7512#7521#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1194,15 +1190,15 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#787#793#0" expanded="true" />
-            <element signature="e#1339#1349#0" expanded="true" />
-            <element signature="e#2223#2231#0" expanded="true" />
+            <element signature="e#812#818#0" expanded="true" />
+            <element signature="e#1309#1319#0" expanded="true" />
+            <element signature="e#2193#2201#0" expanded="true" />
             <element signature="method#findNonZeroRows#0;class#Main#0" expanded="false" />
-            <element signature="e#5029#5046#0" expanded="true" />
-            <element signature="e#5529#5557#0" expanded="true" />
-            <element signature="e#5924#5933#0" expanded="true" />
-            <element signature="e#6343#6361#0" expanded="true" />
-            <element signature="e#6771#6780#0" expanded="true" />
+            <element signature="e#5770#5787#0" expanded="true" />
+            <element signature="e#6270#6298#0" expanded="true" />
+            <element signature="e#6665#6674#0" expanded="true" />
+            <element signature="e#7084#7102#0" expanded="true" />
+            <element signature="e#7512#7521#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1223,15 +1219,15 @@
           <caret line="10" column="0" lean-forward="false" selection-start-line="4" selection-start-column="14" selection-end-line="10" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#787#793#0" expanded="true" />
-            <element signature="e#1339#1349#0" expanded="true" />
-            <element signature="e#2223#2231#0" expanded="true" />
+            <element signature="e#812#818#0" expanded="true" />
+            <element signature="e#1309#1319#0" expanded="true" />
+            <element signature="e#2193#2201#0" expanded="true" />
             <element signature="method#findNonZeroRows#0;class#Main#0" expanded="false" />
-            <element signature="e#5029#5046#0" expanded="true" />
-            <element signature="e#5529#5557#0" expanded="true" />
-            <element signature="e#5924#5933#0" expanded="true" />
-            <element signature="e#6343#6361#0" expanded="true" />
-            <element signature="e#6771#6780#0" expanded="true" />
+            <element signature="e#5770#5787#0" expanded="true" />
+            <element signature="e#6270#6298#0" expanded="true" />
+            <element signature="e#6665#6674#0" expanded="true" />
+            <element signature="e#7084#7102#0" expanded="true" />
+            <element signature="e#7512#7521#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1250,15 +1246,15 @@
           <caret line="23" column="39" lean-forward="false" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#787#793#0" expanded="true" />
-            <element signature="e#1339#1349#0" expanded="true" />
-            <element signature="e#2223#2231#0" expanded="true" />
+            <element signature="e#812#818#0" expanded="true" />
+            <element signature="e#1309#1319#0" expanded="true" />
+            <element signature="e#2193#2201#0" expanded="true" />
             <element signature="method#findNonZeroRows#0;class#Main#0" expanded="false" />
-            <element signature="e#5029#5046#0" expanded="true" />
-            <element signature="e#5529#5557#0" expanded="true" />
-            <element signature="e#5924#5933#0" expanded="true" />
-            <element signature="e#6343#6361#0" expanded="true" />
-            <element signature="e#6771#6780#0" expanded="true" />
+            <element signature="e#5770#5787#0" expanded="true" />
+            <element signature="e#6270#6298#0" expanded="true" />
+            <element signature="e#6665#6674#0" expanded="true" />
+            <element signature="e#7084#7102#0" expanded="true" />
+            <element signature="e#7512#7521#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1277,15 +1273,15 @@
           <caret line="52" column="41" lean-forward="false" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#787#793#0" expanded="true" />
-            <element signature="e#1339#1349#0" expanded="true" />
-            <element signature="e#2223#2231#0" expanded="true" />
+            <element signature="e#812#818#0" expanded="true" />
+            <element signature="e#1309#1319#0" expanded="true" />
+            <element signature="e#2193#2201#0" expanded="true" />
             <element signature="method#findNonZeroRows#0;class#Main#0" expanded="false" />
-            <element signature="e#5029#5046#0" expanded="true" />
-            <element signature="e#5529#5557#0" expanded="true" />
-            <element signature="e#5924#5933#0" expanded="true" />
-            <element signature="e#6343#6361#0" expanded="true" />
-            <element signature="e#6771#6780#0" expanded="true" />
+            <element signature="e#5770#5787#0" expanded="true" />
+            <element signature="e#6270#6298#0" expanded="true" />
+            <element signature="e#6665#6674#0" expanded="true" />
+            <element signature="e#7084#7102#0" expanded="true" />
+            <element signature="e#7512#7521#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1304,15 +1300,15 @@
           <caret line="34" column="36" lean-forward="false" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#787#793#0" expanded="true" />
-            <element signature="e#1339#1349#0" expanded="true" />
-            <element signature="e#2223#2231#0" expanded="true" />
+            <element signature="e#812#818#0" expanded="true" />
+            <element signature="e#1309#1319#0" expanded="true" />
+            <element signature="e#2193#2201#0" expanded="true" />
             <element signature="method#findNonZeroRows#0;class#Main#0" expanded="false" />
-            <element signature="e#5029#5046#0" expanded="true" />
-            <element signature="e#5529#5557#0" expanded="true" />
-            <element signature="e#5924#5933#0" expanded="true" />
-            <element signature="e#6343#6361#0" expanded="true" />
-            <element signature="e#6771#6780#0" expanded="true" />
+            <element signature="e#5770#5787#0" expanded="true" />
+            <element signature="e#6270#6298#0" expanded="true" />
+            <element signature="e#6665#6674#0" expanded="true" />
+            <element signature="e#7084#7102#0" expanded="true" />
+            <element signature="e#7512#7521#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1395,19 +1391,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="101" column="62" lean-forward="false" selection-start-line="101" selection-start-column="62" selection-end-line="101" selection-end-column="62" />
+        <state relative-caret-position="300">
+          <caret line="127" column="31" lean-forward="false" selection-start-line="127" selection-start-column="31" selection-end-line="127" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#787#793#0" expanded="true" />
-            <element signature="e#1339#1349#0" expanded="true" />
-            <element signature="e#2223#2231#0" expanded="true" />
+            <element signature="e#812#818#0" expanded="true" />
+            <element signature="e#1309#1319#0" expanded="true" />
+            <element signature="e#2193#2201#0" expanded="true" />
             <element signature="method#findNonZeroRows#0;class#Main#0" expanded="false" />
-            <element signature="e#5029#5046#0" expanded="true" />
-            <element signature="e#5529#5557#0" expanded="true" />
-            <element signature="e#5924#5933#0" expanded="true" />
-            <element signature="e#6343#6361#0" expanded="true" />
-            <element signature="e#6771#6780#0" expanded="true" />
+            <element signature="e#5770#5787#0" expanded="true" />
+            <element signature="e#6270#6298#0" expanded="true" />
+            <element signature="e#6665#6674#0" expanded="true" />
+            <element signature="e#7084#7102#0" expanded="true" />
+            <element signature="e#7512#7521#0" expanded="true" />
           </folding>
         </state>
       </provider>
