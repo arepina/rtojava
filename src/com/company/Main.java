@@ -11,9 +11,9 @@ import scala.collection.JavaConversions;
 
 import java.io.*;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
+import static java.util.stream.Collectors.toList;
 
 public class Main {
 
@@ -35,6 +35,8 @@ public class Main {
         workWithDTM(request, firstNoun);
 
         //Product product = db.getProduct(118583781);
+
+
     }
 
     private static void loadData() {
@@ -80,22 +82,38 @@ public class Main {
         {
             try {
                 ArrayList<Integer> nonZeroFirstNounRows = findFirstNounRows(firstNoun.toString(), headers, matrix);
-                calculateCos(nonZeroFirstNounRows, 0.7);
+                calculateCos(nonZeroFirstNounRows, matrix, 0.7);
             } catch (NullPointerException e) {
                 System.err.println("Didn't find the first noun in request");
-                //todo find the first slovarniy term!!!
-                //if not found return new ArrayList<Product>();
-                //else calculateCos(nonZeroFirstTermRows, 0.7);
+                Collections.sort(headers);
+                String firstTerm = "";
+                for(String word : headers)
+                {
+                    if (word.startsWith("" + request.charAt(0)))
+                    {
+                        firstTerm = word;
+                        break;
+                    }
+                }
+                ArrayList<Integer> nonZeroFirstTermRows = findFirstNounRows(firstTerm, headers, matrix);
+                if(nonZeroFirstTermRows.size() == 0)
+                    throw new IllegalArgumentException("Didn't find anything, empty products lisy");
+                else
+                    calculateCos(nonZeroFirstTermRows, matrix,0.7);
             }
 
-        }
-        else{
-            calculateCos(nonZeroRows, 0.5);
+        } else {
+            calculateCos(nonZeroRows, matrix, 0.5);
         }
     }
 
-    private static void calculateCos(ArrayList<Integer> nonZeroRows, double y) {
-
+    private static void calculateCos(ArrayList<Integer> nonZeroRows, Integer[][] matrix, double y) {
+        List<Double> cosineValues = new ArrayList<>();
+        for (Integer row : nonZeroRows) {
+            //todo form the vector for a row and calc the cosineSimilarity(int[] vectorA, int[] vectorB)
+            cosineValues.add(cosineSimilarity(vectA, vectB));
+        }
+        List<Double> cosineValuesFiltered = cosineValues.stream().filter(c -> c > y).collect(toList());
     }
 
 
@@ -149,12 +167,25 @@ public class Main {
             columnIndex = headers.indexOf(firstNoun);
         else
             throw new IllegalArgumentException("Unknown first noun word");
-        ArrayList<Integer> rows = new ArrayList<Integer>(); // non zero rows for word column
+        ArrayList<Integer> rows = new ArrayList<>(); // non zero rows for word column
         for (int i = 0; i < matrix.length; i++) {
             if (matrix[i][columnIndex - 1] != 0)
                 rows.add(i);
         }
         return rows;
     }
+
+    private static double cosineSimilarity(int[] vectorA, int[] vectorB) {
+        double dotProduct = 0.0;
+        double normA = 0.0;
+        double normB = 0.0;
+        for (int i = 0; i < vectorA.length; i++) {
+            dotProduct += vectorA[i] * vectorB[i];
+            normA += Math.pow(vectorA[i], 2);
+            normB += Math.pow(vectorB[i], 2);
+        }
+        return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
+    }
+
 
 }
