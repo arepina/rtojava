@@ -12,6 +12,7 @@ class Product extends FileType{
     String link;
     Integer id;
     String revOKPD;
+    Double cos;
 
     Product(String date, String ocpd2CodesString, String productName, String measure, Double price,  Integer id,  String regionsString, String link, String revOKPD) {
         this.id = id;
@@ -25,6 +26,13 @@ class Product extends FileType{
         this.revOKPD = revOKPD;
     }
 
+    public void setCos(Double cos) {
+        this.cos = cos;
+    }
+
+    public Double getCos() {
+        return cos;
+    }
 
     static String replacer(String item) {
         item = item.replaceAll("\"", "");
