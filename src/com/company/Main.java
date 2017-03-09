@@ -107,8 +107,8 @@ public class Main {
         }
         products = FilterData.filterByMeasure(products, product.measure);
         products = FilterData.filterByRegions(products, product.regionsString);
-
-
+        products = FilterData.filterByOKPD(products, product.ocpd2CodesString);
+        products = FilterData.filterByPercentile(products, 30, 70);
         products = products.stream().sorted(Comparator.comparing(Product::getCos)).collect(toList());
         return products;
     }

@@ -74,4 +74,13 @@ public class FilterData {
         return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
     }
 
+    public static List<Product> filterByOKPD(List<Product> products, String ocpd2CodesString) {
+
+        return null;
+    }
+
+    public static List<Product> filterByPercentile(List<Product> products, int start, int end) {
+
+        return null;
+    }
 }
