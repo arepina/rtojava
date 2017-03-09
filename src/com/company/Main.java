@@ -42,8 +42,8 @@ public class Main {
     }
 
     private static void loadData() {
-        ArrayList<FileType> dfm = new ArrayList<FileType>();
-        ArrayList<String> headers = ReadCSV.read("../nmzk/data/dfm.csv", dfm, "dfm");
+        dfm = new ArrayList<>();
+        headers = ReadCSV.read("../nmzk/data/dfm.csv", dfm, "dfm");
         matrix = ReadCSV.formMatrix(dfm);
         db = new DB();
         db.connectDb();

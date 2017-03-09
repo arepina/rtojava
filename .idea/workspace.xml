@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d72b3fc-5761-4578-b5b2-545328cb699f" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\-\IdeaProjects\rtojava\.idea\inspectionProfiles\Project_Default.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Product.java" afterPath="$PROJECT_DIR$/src/com/company/Product.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rtojava.iml" afterPath="$PROJECT_DIR$/rtojava.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rtojava.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,12 +29,11 @@
       <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5716096" vertical-offset="144" max-vertical-offset="2057">
-              <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.72243345" vertical-offset="246" max-vertical-offset="2057">
+              <caret line="48" column="23" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#846#852#0" expanded="true" />
-                <element signature="e#1493#1503#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -137,8 +130,8 @@
         <option value="$PROJECT_DIR$/src/com/company/CalcPecentile.java" />
         <option value="$PROJECT_DIR$/src/com/company/CalcPercentiles.java" />
         <option value="$PROJECT_DIR$/src/com/company/RowsFinder.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Main.java" />
         <option value="$PROJECT_DIR$/src/com/company/FilterData.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Main.java" />
       </list>
     </option>
   </component>
@@ -643,7 +636,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#846#852#0" expanded="true" />
-            <element signature="e#1493#1503#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -692,7 +684,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#846#852#0" expanded="true" />
-            <element signature="e#1493#1503#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -741,7 +732,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#846#852#0" expanded="true" />
-            <element signature="e#1493#1503#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -769,7 +759,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#846#852#0" expanded="true" />
-            <element signature="e#1493#1503#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -797,7 +786,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#846#852#0" expanded="true" />
-            <element signature="e#1493#1503#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -825,7 +813,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#846#852#0" expanded="true" />
-            <element signature="e#1493#1503#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -853,7 +840,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#846#852#0" expanded="true" />
-            <element signature="e#1493#1503#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -881,7 +867,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#846#852#0" expanded="true" />
-            <element signature="e#1493#1503#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -909,7 +894,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#846#852#0" expanded="true" />
-            <element signature="e#1493#1503#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -929,7 +913,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#846#852#0" expanded="true" />
-            <element signature="e#1493#1503#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -949,7 +932,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#846#852#0" expanded="true" />
-            <element signature="e#1493#1503#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -969,7 +951,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#846#852#0" expanded="true" />
-            <element signature="e#1493#1503#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -989,7 +970,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#846#852#0" expanded="true" />
-            <element signature="e#1493#1503#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1009,7 +989,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#846#852#0" expanded="true" />
-            <element signature="e#1493#1503#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1103,12 +1082,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5716096" vertical-offset="144" max-vertical-offset="2057">
-          <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.72243345" vertical-offset="246" max-vertical-offset="2057">
+          <caret line="48" column="23" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#846#852#0" expanded="true" />
-            <element signature="e#1493#1503#0" expanded="true" />
           </folding>
         </state>
       </provider>
