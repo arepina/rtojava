@@ -11,7 +11,6 @@ class DB {
             Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection("jdbc:sqlite:../nmzk/data/Products.db");
             return conn;
-
         } catch (Exception e) {
             e.printStackTrace();
         }

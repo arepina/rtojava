@@ -1,6 +1,5 @@
 package com.company;
 
-import javafx.util.Pair;
 import org.json.JSONObject;
 import ru.stachek66.nlp.mystem.holding.Factory;
 import ru.stachek66.nlp.mystem.holding.MyStem;
@@ -18,16 +17,20 @@ import static java.util.stream.Collectors.toList;
 
 public class Main {
 
-    private static ArrayList<FileType> dfm;
     private static ArrayList<String> headers;
-    public static DB db;
+    static DB db;
     private static Integer[][] matrix;
     private static Info firstNoun;
     private final static MyStem mystemAnalyzer = new Factory("-igd --eng-gr --format json --weight").newMyStem("3.0", Option.<File>empty()).get();
 
-
     public static void main(final String[] args) throws MyStemApplicationException, IOException, SQLException, ClassNotFoundException {
+
+//        List<FileType> list = new ArrayList<>();
+//        ReadCSV.read("../nmzk/data/products.csv", list, "products");
+
         loadData();
+
+        Product p = db.getProduct(120848643);
 
         String name = "set prisma";
         String measure = "1";
@@ -35,14 +38,14 @@ public class Main {
 
         ArrayList<String> lemmatizedArray = processRequest(product);
 
-        //todo form a vector, step 4
+        //TODO form a vector, step 4
         Integer[] requestVector = new Integer[0];
 
         List<Product> result = workWithDTM(product, requestVector);
     }
 
     private static void loadData() {
-        dfm = new ArrayList<>();
+        ArrayList<FileType> dfm = new ArrayList<>();
         headers = ReadCSV.read("../nmzk/data/dfm.csv", dfm, "dfm");
         matrix = ReadCSV.formMatrix(dfm);
         db = new DB();
@@ -108,7 +111,7 @@ public class Main {
         products = FilterData.filterByMeasure(products, product.measure);
         products = FilterData.filterByRegions(products, product.regionsString);
         products = FilterData.filterByOKPD(products, product.ocpd2CodesString);
-        products = FilterData.filterByPercentile(products, 30, 70);
+        products = FilterData.filterByPercentile(products);
         products = products.stream().sorted(Comparator.comparing(Product::getCos)).collect(toList());
         return products;
     }

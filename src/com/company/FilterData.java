@@ -4,22 +4,25 @@ import javafx.util.Pair;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
+import static ch.qos.logback.core.util.OptionHelper.isEmpty;
 import static java.util.stream.Collectors.toList;
 
 
-public class FilterData {
-    public static List<Product> filterByRegions(List<Product> products, String regionsString) {
+class FilterData {
+    static List<Product> filterByRegions(List<Product> products, String regionsString) {
         Map<String, Long> occurrences = products.stream().collect(Collectors.groupingBy(w -> w.regionsString, Collectors.counting()));
         if (occurrences.containsKey(regionsString) && occurrences.get(regionsString) > 20)
             return products.stream().filter(c -> c.regionsString.equals(regionsString)).collect(toList());
         return products;
     }
 
-    public static List<Product> filterByMeasure(List<Product> products, String measure) {
+    static List<Product> filterByMeasure(List<Product> products, String measure) {
         if (measure != null && measure.length() != 0) {
             return products.stream().filter(c -> c.measure.equals(measure)).collect(toList());
         } else {
@@ -28,7 +31,7 @@ public class FilterData {
         }
     }
 
-    public static List<Product> filterByCos(ArrayList<Integer> nonZeroRows, Integer[][] matrix, double y, Integer[] requestVector) {
+    static List<Product> filterByCos(ArrayList<Integer> nonZeroRows, Integer[][] matrix, double y, Integer[] requestVector) {
         List<Pair<Integer, Double>> cosineValues = new ArrayList<>();
         List<Integer> productID = new ArrayList<>();
         for (Integer row : nonZeroRows) {
@@ -74,13 +77,52 @@ public class FilterData {
         return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
     }
 
-    public static List<Product> filterByOKPD(List<Product> products, String ocpd2CodesString) {
-
-        return null;
+    static List<Product> filterByOKPD(List<Product> products, String ocpd2CodesString) {
+        List<Integer> numberOfSameDigits = new ArrayList<>();
+        boolean isFirstTwoDigitsFound = false;
+        String twoDigits = ocpd2CodesString.substring(0, 2);
+        if(ocpd2CodesString.length() != 0){
+            for(Product p : products) {
+                int num = countMatches(ocpd2CodesString, p.ocpd2CodesString);
+                numberOfSameDigits.add(num);
+                if (twoDigits.equals(p.ocpd2CodesString.substring(0, 2)))
+                        isFirstTwoDigitsFound = true;
+            }
+            if (!isFirstTwoDigitsFound)
+                return new ArrayList<>();
+            int max = Collections.max(numberOfSameDigits);
+            products = IntStream.range(0, numberOfSameDigits.size())
+                    .filter(i -> numberOfSameDigits.get(i) == max)
+                    .mapToObj(products::get).collect(toList());
+            for(Product p: products)
+            {
+                p.setCos(0.7 * p.getCos() + 0.3 * max / 9);
+            }
+            return products;
+        }
+        //TODO WHAT TO DO IF NO ocpd2CodesString?
+        return products;
     }
 
-    public static List<Product> filterByPercentile(List<Product> products, int start, int end) {
+    private static int countMatches(String str, String sub) {
+        if (isEmpty(str) || isEmpty(sub)) {
+            return 0;
+        }
+        int count = 0;
+        int idx = 0;
+        while ((idx = str.indexOf(sub, idx)) != -1) {
+            count++;
+            idx += sub.length();
+        }
+        return count;
+    }
 
-        return null;
+    static List<Product> filterByPercentile(List<Product> products) {
+        double sum = 0;
+        for (Product p : products)
+            sum += p.price;
+        double start_price = sum * 30 / 100;
+        double finish_price = sum * 70 / 100;
+        return products.stream().filter(x->x.price >= start_price && x.price <= finish_price).collect((Collectors.toList()));
     }
 }

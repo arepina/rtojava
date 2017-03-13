@@ -6,13 +6,13 @@ class Product extends FileType{
     String productName;
     String regionsString;
     String measure;
-    String date;
+    private String date;
     String ocpd2CodesString;
     Double price;
-    String link;
-    Integer id;
-    String revOCPD;
-    Double cos;
+    private String link;
+    private Integer id;
+    private String revOCPD;
+    private Double cos;
 
     Product(String date, String ocpd2CodesString, String productName, String measure, Double price,  Integer id,  String regionsString, String link, String revOCPD) {
         this.id = id;
@@ -26,11 +26,11 @@ class Product extends FileType{
         this.revOCPD = revOCPD;
     }
 
-    public void setCos(Double cos) {
+    void setCos(Double cos) {
         this.cos = cos;
     }
 
-    public Double getCos() {
+    Double getCos() {
         return cos;
     }
 
