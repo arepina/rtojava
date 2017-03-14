@@ -15,9 +15,9 @@ class DB {
         }
     }
 
-    Product getProduct(Integer id) throws SQLException {
+    Product getProduct(String id) throws SQLException {
         Statement statement = conn.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM Products WHERE product_id = " + id);
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM Products WHERE product_id = " + Integer.parseInt(id));
         return new Product(resultSet.getString("ct_publish_date"), resultSet.getString("product_okpd_2"),
                 resultSet.getString("product_name"), resultSet.getString("product_measure"),
                 resultSet.getDouble("product_price"), resultSet.getInt("product_id"),

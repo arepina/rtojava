@@ -2,11 +2,9 @@ package com.company;
 
 import javafx.util.Pair;
 
+import java.lang.reflect.Array;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -31,28 +29,37 @@ class FilterData {
         }
     }
 
-    static List<Product> filterByCos(ArrayList<Integer> nonZeroRows, Integer[][] matrix, double y, Integer[] requestVector) {
+    static List<Product> filterByCos(ArrayList<Integer> nonZeroRows, Map<String, BitSet> matrix, double y, Integer[] requestVector, ArrayList<String> indexes) {
         List<Pair<Integer, Double>> cosineValues = new ArrayList<>();
-        List<Integer> productID = new ArrayList<>();
-        for (Integer row : nonZeroRows) {
-            Integer[] rowVector = new Integer[matrix[row].length];
-            System.arraycopy(matrix[row], 0, rowVector, 0, matrix[row].length);
-            cosineValues.add(new Pair<>(row, cosineSimilarity(requestVector, rowVector)));
+        List<String> productID = new ArrayList<>();
+        for (Integer row : nonZeroRows) { // get the rows vectors
+            Integer[] rowVector = new Integer[matrix.entrySet().size()];
+            int count = 0;
+            for (Map.Entry<String, BitSet> entry : matrix.entrySet()) {
+                String str = entry.getValue().toString().replace("{", "").replace("}", "").replace(" ", "");
+                List<String> nonZeroIndexes = Arrays.asList(str.split(","));
+                if(nonZeroIndexes.contains(String.valueOf(Main.MAX - 3 * row)))
+                    rowVector[count] = 1;
+                else
+                    rowVector[count] = 0;
+                count++;
+            }
+            cosineValues.add(new Pair<>(row, cosineSimilarity(requestVector, rowVector))); // calc cosine similarity
         }
         List<Pair<Integer, Double>> cosineValuesFiltered = cosineValues.stream().filter(c -> c.getValue() > y).collect(toList());
-        productID.addAll(cosineValuesFiltered.stream().map(row -> matrix[0][row.getKey()]).collect(Collectors.toList()));
+        productID.addAll(cosineValuesFiltered.stream().map(row -> indexes.get(Integer.parseInt(String.valueOf(row.getKey())) + 1)).collect(Collectors.toList()));
         List<Product> products = findProducts(productID);
         int count = 0;
-        for (Product p : products) {
+        for (Product p : products) { // add the cos values to products info
             p.setCos(cosineValuesFiltered.get(count).getValue());
             count += 1;
         }
         return products;
     }
 
-    private static List<Product> findProducts(List<Integer> productID) {
+    private static List<Product> findProducts(List<String> productID) {
         List<Product> products = new ArrayList<>();
-        for (Integer id : productID) {
+        for (String id : productID) {
             try {
                 Product p = Main.db.getProduct(id);
                 products.add(p);
@@ -81,12 +88,12 @@ class FilterData {
         List<Integer> numberOfSameDigits = new ArrayList<>();
         boolean isFirstTwoDigitsFound = false;
         String twoDigits = ocpd2CodesString.substring(0, 2);
-        if(ocpd2CodesString.length() != 0){
-            for(Product p : products) {
+        if (ocpd2CodesString.length() != 0) {
+            for (Product p : products) {
                 int num = countMatches(ocpd2CodesString, p.ocpd2CodesString);
                 numberOfSameDigits.add(num);
                 if (twoDigits.equals(p.ocpd2CodesString.substring(0, 2)))
-                        isFirstTwoDigitsFound = true;
+                    isFirstTwoDigitsFound = true;
             }
             if (!isFirstTwoDigitsFound)
                 return new ArrayList<>();
@@ -94,8 +101,7 @@ class FilterData {
             products = IntStream.range(0, numberOfSameDigits.size())
                     .filter(i -> numberOfSameDigits.get(i) == max)
                     .mapToObj(products::get).collect(toList());
-            for(Product p: products)
-            {
+            for (Product p : products) {
                 p.setCos(0.7 * p.getCos() + 0.3 * max / 9);
             }
             return products;
@@ -122,6 +128,6 @@ class FilterData {
             sum += p.price;
         double start_price = sum * 30 / 100;
         double finish_price = sum * 70 / 100;
-        return products.stream().filter(x->x.price >= start_price && x.price <= finish_price).collect((Collectors.toList()));
+        return products.stream().filter(x -> x.price >= start_price && x.price <= finish_price).collect((Collectors.toList()));
     }
 }

@@ -43,12 +43,12 @@ class ReadFile {
     }
 
     static Map<String, BitSet> formMatrix(String filePath, ArrayList<String> features, ArrayList<String> indexes) {
-        Map<String, ArrayList<Byte>> matrix_prepare = new HashMap<>();
+        Map<String, ArrayList<Byte>> matrix_prepare = new LinkedHashMap<>();
         BufferedReader br;
         String line;
         int count = 0;
         for (String feature : features) {
-            if (count == 100)
+            if (matrix_prepare.size() == 100)
                 break;
             matrix_prepare.put(feature, null);
             count += 1;
@@ -76,28 +76,29 @@ class ReadFile {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Map<String, BitSet> matrix = new HashMap<>();
+        Map<String, BitSet> matrix = new LinkedHashMap<>();
         for (Map.Entry<String, ArrayList<Byte>> entry : matrix_prepare.entrySet()) {
             Byte[] byte_arr = entry.getValue().toArray(new Byte[entry.getValue().size()]);
-            BitSet set = BitSet.valueOf(toPrimitives(byte_arr));
-            matrix.put(entry.getKey(), set);
+            String str = Arrays.toString(byte_arr);
+            BitSet bitSet = createFromString(str);
+            matrix.put(entry.getKey(), bitSet);
         }
         return matrix;
     }
 
-    private static byte[] toPrimitives(Byte[] oBytes) {
-        byte[] bytes = new byte[oBytes.length];
-        for (int i = 0; i < oBytes.length; i++) {
-            bytes[i] = oBytes[i];
+    private static BitSet createFromString(String s) {
+        BitSet t = new BitSet(s.length());
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (s.charAt(i) == '1')
+                t.set(s.length() - 1 - i);
         }
-        return bytes;
+        return t;
     }
-
 
     static ArrayList<String> readHeaders(String csvFile) {
         BufferedReader br;
         String line;
-        ArrayList<String> head = new ArrayList<String>();
+        ArrayList<String> head = new ArrayList<>();
         try {
             br = new BufferedReader(new FileReader(csvFile));
             while ((line = br.readLine()) != null) {

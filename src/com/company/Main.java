@@ -10,6 +10,7 @@ import scala.Option;
 import scala.collection.JavaConversions;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -17,6 +18,7 @@ import static java.util.stream.Collectors.toList;
 
 public class Main {
 
+    final static int MAX = 298;
     private static ArrayList<String> indexes;
     private static ArrayList<String> features;
     static DB db;
@@ -27,9 +29,12 @@ public class Main {
     public static void main(final String[] args) throws MyStemApplicationException, IOException, SQLException, ClassNotFoundException {
         loadData();
         Product requestProduct = new Product("", "", "set prisma", "", 0.0, 0, "", "", "");
-        ArrayList<String> lemmatizedArray = processRequest(requestProduct);
+        //ArrayList<String> lemmatizedArray = processRequest(requestProduct);
         //TODO form a vector using lemmatizedArray, step 4
-        Integer[] requestVector = new Integer[0];
+        Integer[] requestVector = new Integer[matrix.size()];
+        Arrays.fill(requestVector, 0);
+        requestVector[3] = 1;
+        requestVector[4] = 1;
         List<Product> result = workWithDTM(requestProduct, requestVector);
         for (Product p : result)
             System.out.println(p.toString());
@@ -55,56 +60,56 @@ public class Main {
     }
 
     private static ArrayList<String> formLemmatizedArray(Iterable<Info> result) {
-        ArrayList<String> lemmatizedArray = new ArrayList<>();
-        for (final Info info : result) {
-            JSONObject jObject = new JSONObject(info.rawResponse());
-            String analysis = jObject.get("analysis").toString();
-            analysis = analysis.replace("[", "");
-            analysis = analysis.replace("]", "");
-            String gr = new JSONObject(analysis).get("gr").toString();
-            if (firstNoun == null && gr.charAt(0) == 'S')
-                firstNoun = info;
-            System.out.println(info.initial() + " -> " + info.lex() + " | " + info.rawResponse());
-            lemmatizedArray.add(info.lex().toString().substring(5, info.lex().toString().length() - 1));
-        }
-        System.out.println(firstNoun);
-        return lemmatizedArray;
+//        ArrayList<String> lemmatizedArray = new ArrayList<>();
+//        for (final Info info : result) {
+//            JSONObject jObject = new JSONObject(info.rawResponse());
+//            String analysis = jObject.get("analysis").toString();
+//            analysis = analysis.replace("[", "");
+//            analysis = analysis.replace("]", "");
+//            String gr = new JSONObject(analysis).get("gr").toString();
+//            if (firstNoun == null && gr.charAt(0) == 'S')
+//                firstNoun = info;
+//            System.out.println(info.initial() + " -> " + info.lex() + " | " + info.rawResponse());
+//            lemmatizedArray.add(info.lex().toString().substring(5, info.lex().toString().length() - 1));
+//        }
+//        System.out.println(firstNoun);
+//        return lemmatizedArray;
+        return null;
     }
 
     private static List<Product> workWithDTM(Product product, Integer[] requestVector) {
-//        ArrayList<Integer> nonZeroRows = RowsFinder.findNonZeroRows(product.productName, features, indexes, matrix);
-//        List<Product> products = new ArrayList<>();
-//        if (nonZeroRows.size() == 0) // we don't have a row or more with all the words
-//        {
-//            try {
-//                ArrayList<Integer> nonZeroFirstNounRows = RowsFinder.findFirstNounRows(firstNoun.toString(), features, indexes, matrix);
-//                products = FilterData.filterByCos(nonZeroFirstNounRows, matrix, 0.7, requestVector);
-//            } catch (NullPointerException e) {
-//                System.err.println("Didn't find the first noun in request");
-//                Collections.sort(features);
-//                String firstTerm = "";
-//                for (String word : features) {
-//                    if (word.startsWith("" + product.productName.charAt(0))) {
-//                        firstTerm = word;
-//                        break;
-//                    }
-//                }
-//                ArrayList<Integer> nonZeroFirstTermRows = RowsFinder.findFirstNounRows(firstTerm, features, indexes, matrix);
-//                if (nonZeroFirstTermRows.size() == 0)
-//                    return products;
-//                else
-//                    products = FilterData.filterByCos(nonZeroFirstTermRows, matrix, 0.7, requestVector);
-//            }
-//
-//        } else {
-//            products = FilterData.filterByCos(nonZeroRows, matrix, 0.5, requestVector);
-//        }
-//        products = FilterData.filterByMeasure(products, product.measure);
-//        products = FilterData.filterByRegions(products, product.regionsString);
-//        products = FilterData.filterByOKPD(products, product.ocpd2CodesString);
-//        products = FilterData.filterByPercentile(products);
-//        products = products.stream().sorted(Comparator.comparing(Product::getCos)).collect(toList());
-//        return products;
-        return null;
+        ArrayList<Integer> nonZeroRows = RowsFinder.findNonZeroRows(product.productName, matrix);
+        List<Product> products = new ArrayList<>();
+        if (nonZeroRows.size() == 0) // we don't have a row or more with all the words
+        {
+            try {
+                ArrayList<Integer> nonZeroFirstNounRows = RowsFinder.findFirstRows(firstNoun.toString(), matrix);
+                products = FilterData.filterByCos(nonZeroFirstNounRows, matrix, 0.7, requestVector, indexes);
+            } catch (NullPointerException e) {
+                System.err.println("Didn't find the first noun in request");
+                Collections.sort(features);
+                String firstTerm = "";
+                for (String word : features) {
+                    if (word.startsWith("" + product.productName.charAt(0))) {
+                        firstTerm = word;
+                        break;
+                    }
+                }
+                ArrayList<Integer> nonZeroFirstTermRows = RowsFinder.findFirstRows(firstTerm, matrix);
+                if (nonZeroFirstTermRows.size() == 0)
+                    return products;
+                else
+                    products = FilterData.filterByCos(nonZeroFirstTermRows, matrix, 0.7, requestVector, indexes);
+            }
+
+        } else {
+            products = FilterData.filterByCos(nonZeroRows, matrix, 0.5, requestVector, indexes);
+        }
+        products = FilterData.filterByMeasure(products, product.measure);
+        products = FilterData.filterByRegions(products, product.regionsString);
+        products = FilterData.filterByOKPD(products, product.ocpd2CodesString);
+        products = FilterData.filterByPercentile(products);
+        products = products.stream().sorted(Comparator.comparing(Product::getCos)).collect(toList());
+        return products;
     }
 }
