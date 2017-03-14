@@ -6,15 +6,13 @@ import java.sql.*;
 class DB {
     private Connection conn;
 
-    Connection connectDb() {
+    void connectDb() {
         try {
             Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:../nmzk/data/Products.db");
-            return conn;
-        } catch (Exception e) {
-            e.printStackTrace();
+            conn = DriverManager.getConnection("jdbc:sqlite:../untitled/Products.db");
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
-        return null;
     }
 
     Product getProduct(Integer id) throws SQLException {

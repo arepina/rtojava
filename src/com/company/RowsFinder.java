@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RowsFinder {
-    public static ArrayList<Integer> findFirstNounRows(String firstNoun, ArrayList<String> headers, Integer[][] matrix) {
+class RowsFinder {
+    static ArrayList<Integer> findFirstNounRows(String firstNoun, ArrayList<String> features, ArrayList<String> indexes, Integer[][] matrix) {
         int columnIndex = 0;
-        if (headers.contains(firstNoun))
-            columnIndex = headers.indexOf(firstNoun);
+        if (features.contains(firstNoun))
+            columnIndex = features.indexOf(firstNoun);
         else
             throw new IllegalArgumentException("Unknown first noun word");
         ArrayList<Integer> rows = new ArrayList<>(); // non zero rows for word column
@@ -19,14 +19,14 @@ public class RowsFinder {
         return rows;
     }
 
-    public static ArrayList<Integer> findNonZeroRows(String str, ArrayList<String> headers, Integer[][] matrix) {
+    static ArrayList<Integer> findNonZeroRows(String str, ArrayList<String> features, ArrayList<String> indexes, Integer[][] matrix) {
         String[] words = str.split(" ");
         Map<String, Integer> columnWords = new HashMap<>(); // column for each word
         for (String word : words) // get the column numbers for each word
         {
             columnWords.put(word, null);
-            if (headers.contains(word)) {
-                int columnNumber = headers.indexOf(word);
+            if (features.contains(word)) {
+                int columnNumber = features.indexOf(word);
                 columnWords.put(word, columnNumber);
             } else
                 throw new IllegalArgumentException("Unknown word in non zero rows");
@@ -57,7 +57,7 @@ public class RowsFinder {
         }
         ArrayList<Integer> resultRows = new ArrayList<>();
         for (Integer rowNumber : rowsNumber.keySet()) {
-            if (rowsNumber.get(rowNumber) == columnWords.keySet().size())
+            if (rowsNumber.get(rowNumber) == columnWords.keySet().size())  //try to find the full similarity
                 resultRows.add(rowNumber);
         }
         return resultRows;

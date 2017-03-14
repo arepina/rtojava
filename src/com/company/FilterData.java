@@ -100,7 +100,6 @@ class FilterData {
             }
             return products;
         }
-        //TODO WHAT TO DO IF NO ocpd2CodesString?
         return products;
     }
 

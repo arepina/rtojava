@@ -1,7 +1,7 @@
 package com.company;
 
 
-class Product extends FileType{
+class Product{
 
     String productName;
     String regionsString;
@@ -34,7 +34,12 @@ class Product extends FileType{
         return cos;
     }
 
-    static String replacer(String item) {
+    @Override
+    public String toString() {
+        return date + " " + ocpd2CodesString + " " + productName + " " + measure + " " + price + " " + id + " " + regionsString + " " + link + " " + revOCPD;
+    }
+
+    private static String replacer(String item) {
         item = item.replaceAll("\"", "");
         item = item.replaceAll("(\\d)(\\D)", "\\1\\ \\2");
         item = item.replaceAll("(\\D)(\\d)", "\\1\\ \\2");
