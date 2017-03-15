@@ -87,12 +87,12 @@ class FilterData {
     static List<Product> filterByOKPD(List<Product> products, String ocpd2CodesString) {
         List<Integer> numberOfSameDigits = new ArrayList<>();
         boolean isFirstTwoDigitsFound = false;
-        String twoDigits = ocpd2CodesString.substring(0, 2);
         if (ocpd2CodesString.length() != 0) {
+            String twoDigits = ocpd2CodesString.substring(0, 2);
             for (Product p : products) {
                 int num = countMatches(ocpd2CodesString, p.ocpd2CodesString);
                 numberOfSameDigits.add(num);
-                if (twoDigits.equals(p.ocpd2CodesString.substring(0, 2)))
+                if (p.ocpd2CodesString != null && p.ocpd2CodesString.length() != 0 && twoDigits.equals(p.ocpd2CodesString.substring(0, 2)))
                     isFirstTwoDigitsFound = true;
             }
             if (!isFirstTwoDigitsFound)
@@ -109,15 +109,17 @@ class FilterData {
         return products;
     }
 
-    private static int countMatches(String str, String sub) {
-        if (isEmpty(str) || isEmpty(sub)) {
+    private static int countMatches(String search, String product) {
+        if (isEmpty(search) || isEmpty(product) || search.length() != product.length()) {
             return 0;
         }
+        search = search.replace(".", "");
+        product = product.replace(".", "");
         int count = 0;
-        int idx = 0;
-        while ((idx = str.indexOf(sub, idx)) != -1) {
-            count++;
-            idx += sub.length();
+        for(int i = 0; i < product.length(); i++)
+        {
+            if (product.charAt(i) == search.charAt(i))
+                count++;
         }
         return count;
     }

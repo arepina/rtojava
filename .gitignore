@@ -1,4 +1,2 @@
-src/com/compny/data/dfm
-src/com/compny/data/products
-src/com/compny/data/
-target/classes/com/compny/data/
+src/com/company/data
+target/classes/com/company/data/

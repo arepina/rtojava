@@ -24,11 +24,12 @@ public class Main {
     static DB db;
     private static Map<String, BitSet> matrix;
     private static Info firstNoun;
-    //private final static MyStem mystemAnalyzer = new Factory("-igd --eng-gr --format json --weight").newMyStem("3.0", Option.empty()).get();
+    private final static MyStem mystemAnalyzer = new Factory("-igd --eng-gr --format json --weight").newMyStem("3.0", Option.empty()).get();
 
     public static void main(final String[] args) throws MyStemApplicationException, IOException, SQLException, ClassNotFoundException {
         loadData();
-        Product requestProduct = new Product("", "", "set prisma", "", 0.0, 0, "", "", "");
+        Product requestProduct = new Product("", "32.35.17.123", "set prisma", "", 0, 0, "", "", "");
+        //TODO UNCOMMENT
         //ArrayList<String> lemmatizedArray = processRequest(requestProduct);
         //TODO form a vector using lemmatizedArray, step 4
         Integer[] requestVector = new Integer[matrix.size()];
@@ -41,40 +42,38 @@ public class Main {
     }
 
     private static void loadData() {
-        features = ReadFile.readHeaders("../nmzk/data/features.csv");
-        indexes = ReadFile.readHeaders("../nmzk/data/docs.csv");
-        matrix = ReadFile.formMatrix("../nmzk/data/dfm_new.csv", features, indexes);
+        features = ReadFile.readHeaders("./src/com/company/data/features.csv");
+        indexes = ReadFile.readHeaders("./src/com/company/data/docs.csv");
+        matrix = ReadFile.formMatrix("./src/com/company/data/dfm_new.csv", features, indexes);
         db = new DB();
         db.connectDb();
     }
 
     private static ArrayList<String> processRequest(Product product) throws MyStemApplicationException {
-//        Iterable<Info> result =
-//                JavaConversions.asJavaIterable(
-//                        mystemAnalyzer
-//                                .analyze(Request.apply(product.productName))
-//                                .info()
-//                                .toIterable());
-//        return formLemmatizedArray(result);
-        return null;
+        Iterable<Info> result =
+                JavaConversions.asJavaIterable(
+                        mystemAnalyzer
+                                .analyze(Request.apply(product.productName))
+                                .info()
+                                .toIterable());
+        return formLemmatizedArray(result);
     }
 
     private static ArrayList<String> formLemmatizedArray(Iterable<Info> result) {
-//        ArrayList<String> lemmatizedArray = new ArrayList<>();
-//        for (final Info info : result) {
-//            JSONObject jObject = new JSONObject(info.rawResponse());
-//            String analysis = jObject.get("analysis").toString();
-//            analysis = analysis.replace("[", "");
-//            analysis = analysis.replace("]", "");
-//            String gr = new JSONObject(analysis).get("gr").toString();
-//            if (firstNoun == null && gr.charAt(0) == 'S')
-//                firstNoun = info;
-//            System.out.println(info.initial() + " -> " + info.lex() + " | " + info.rawResponse());
-//            lemmatizedArray.add(info.lex().toString().substring(5, info.lex().toString().length() - 1));
-//        }
-//        System.out.println(firstNoun);
-//        return lemmatizedArray;
-        return null;
+        ArrayList<String> lemmatizedArray = new ArrayList<>();
+        for (final Info info : result) {
+            JSONObject jObject = new JSONObject(info.rawResponse());
+            String analysis = jObject.get("analysis").toString();
+            analysis = analysis.replace("[", "");
+            analysis = analysis.replace("]", "");
+            String gr = new JSONObject(analysis).get("gr").toString();
+            if (firstNoun == null && gr.charAt(0) == 'S')
+                firstNoun = info;
+            System.out.println(info.initial() + " -> " + info.lex() + " | " + info.rawResponse());
+            lemmatizedArray.add(info.lex().toString().substring(5, info.lex().toString().length() - 1));
+        }
+        System.out.println(firstNoun);
+        return lemmatizedArray;
     }
 
     private static List<Product> workWithDTM(Product product, Integer[] requestVector) {
@@ -108,7 +107,8 @@ public class Main {
         products = FilterData.filterByMeasure(products, product.measure);
         products = FilterData.filterByRegions(products, product.regionsString);
         products = FilterData.filterByOKPD(products, product.ocpd2CodesString);
-        products = FilterData.filterByPercentile(products);
+        //TODO UNCOMMENT
+        //products = FilterData.filterByPercentile(products);
         products = products.stream().sorted(Comparator.comparing(Product::getCos)).collect(toList());
         return products;
     }
