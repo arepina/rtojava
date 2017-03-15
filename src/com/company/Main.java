@@ -10,11 +10,9 @@ import scala.Option;
 import scala.collection.JavaConversions;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.sql.SQLException;
 import java.util.*;
 
-import static java.util.stream.Collectors.toList;
 
 public class Main {
 
@@ -28,7 +26,7 @@ public class Main {
 
     public static void main(final String[] args) throws MyStemApplicationException, IOException, SQLException, ClassNotFoundException {
         loadData();
-        Product requestProduct = new Product("", "32.35.17.123", "set prisma", "", 0, 0, "", "", "");
+        Product requestProduct = new Product("", "35.35.17.123", "set prisma", "", (double) 0, 0, "", "", "");
         //TODO UNCOMMENT
         //ArrayList<String> lemmatizedArray = processRequest(requestProduct);
         //TODO form a vector using lemmatizedArray, step 4
@@ -101,15 +99,9 @@ public class Main {
                     products = FilterData.filterByCos(nonZeroFirstTermRows, matrix, 0.7, requestVector, indexes);
             }
 
-        } else {
+        } else
             products = FilterData.filterByCos(nonZeroRows, matrix, 0.5, requestVector, indexes);
-        }
-        products = FilterData.filterByMeasure(products, product.measure);
-        products = FilterData.filterByRegions(products, product.regionsString);
-        products = FilterData.filterByOKPD(products, product.ocpd2CodesString);
-        //TODO UNCOMMENT
-        //products = FilterData.filterByPercentile(products);
-        products = products.stream().sorted(Comparator.comparing(Product::getCos)).collect(toList());
-        return products;
+        return FilterData.processFilters(products, product);
     }
+
 }

@@ -8,13 +8,13 @@ class Product{
     String measure;
     private String date;
     String ocpd2CodesString;
-    Integer price;
+    Double price;
     private String link;
     private Integer id;
     private String revOCPD;
     private Double cos;
 
-    Product(String date, String ocpd2CodesString, String productName, String measure, Integer price,  Integer id,  String regionsString, String link, String revOCPD) {
+    Product(String date, String ocpd2CodesString, String productName, String measure, Double price,  Integer id,  String regionsString, String link, String revOCPD) {
         this.id = id;
         this.productName = replacer(productName);
         this.regionsString = regionsString;

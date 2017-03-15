@@ -2,7 +2,6 @@ package com.company;
 
 import javafx.util.Pair;
 
-import java.lang.reflect.Array;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -13,14 +12,25 @@ import static java.util.stream.Collectors.toList;
 
 
 class FilterData {
-    static List<Product> filterByRegions(List<Product> products, String regionsString) {
+
+    static List<Product> processFilters(List<Product> products, Product product)
+    {
+        products = FilterData.filterByMeasure(products, product.measure);
+        products = FilterData.filterByRegions(products, product.regionsString);
+        products = FilterData.filterByOKPD(products, product.ocpd2CodesString);
+        products = FilterData.filterByPercentile(products);
+        products = products.stream().sorted(Comparator.comparing(Product::getCos)).collect(toList());
+        return products;
+    }
+
+    private static List<Product> filterByRegions(List<Product> products, String regionsString) {
         Map<String, Long> occurrences = products.stream().collect(Collectors.groupingBy(w -> w.regionsString, Collectors.counting()));
         if (occurrences.containsKey(regionsString) && occurrences.get(regionsString) > 20)
             return products.stream().filter(c -> c.regionsString.equals(regionsString)).collect(toList());
         return products;
     }
 
-    static List<Product> filterByMeasure(List<Product> products, String measure) {
+    private static List<Product> filterByMeasure(List<Product> products, String measure) {
         if (measure != null && measure.length() != 0) {
             return products.stream().filter(c -> c.measure.equals(measure)).collect(toList());
         } else {
@@ -84,7 +94,7 @@ class FilterData {
         return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
     }
 
-    static List<Product> filterByOKPD(List<Product> products, String ocpd2CodesString) {
+    private static List<Product> filterByOKPD(List<Product> products, String ocpd2CodesString) {
         List<Integer> numberOfSameDigits = new ArrayList<>();
         boolean isFirstTwoDigitsFound = false;
         if (ocpd2CodesString.length() != 0) {
@@ -124,7 +134,7 @@ class FilterData {
         return count;
     }
 
-    static List<Product> filterByPercentile(List<Product> products) {
+    private static List<Product> filterByPercentile(List<Product> products) {
         double sum = 0;
         for (Product p : products)
             sum += p.price;
