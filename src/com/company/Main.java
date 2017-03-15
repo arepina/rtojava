@@ -26,6 +26,10 @@ public class Main {
 
     public static void main(final String[] args) throws MyStemApplicationException, IOException, SQLException, ClassNotFoundException {
         loadData();
+        serialize();
+        matrix = null;
+        deserialize();
+        long start = System.currentTimeMillis();
         Product requestProduct = new Product("", "35.35.17.123", "set prisma", "", (double) 0, 0, "", "", "");
         //TODO UNCOMMENT
         //ArrayList<String> lemmatizedArray = processRequest(requestProduct);
@@ -37,6 +41,41 @@ public class Main {
         List<Product> result = workWithDTM(requestProduct, requestVector);
         for (Product p : result)
             System.out.println(p.toString());
+        long finish = System.currentTimeMillis();
+        long timeConsumedMillis = finish - start;
+        System.out.println((double)(timeConsumedMillis) + " ms");
+    }
+
+    private static void deserialize() {
+        Serialization ser;
+        try {
+            FileInputStream fileIn = new FileInputStream("/tmp/serialized_matrix.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            ser = (Serialization) in.readObject();
+            matrix = ser.matrix;
+            in.close();
+            fileIn.close();
+        }catch(IOException i) {
+            i.printStackTrace();
+        }catch(ClassNotFoundException c) {
+            System.out.println("Employee class not found");
+            c.printStackTrace();
+        }
+    }
+
+    private static void serialize() {
+        Serialization ser = new Serialization();
+        ser.matrix = matrix;
+        try {
+            FileOutputStream fileOut = new FileOutputStream("/tmp/serialized_matrix.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(ser);
+            out.close();
+            fileOut.close();
+            System.out.printf("Serialized data is saved in /tmp/serialized_matrix.ser");
+        }catch(IOException i) {
+            i.printStackTrace();
+        }
     }
 
     private static void loadData() {
