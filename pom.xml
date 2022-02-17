@@ -20,7 +20,7 @@
         <dependency>
             <groupId>ru.stachek66.nlp</groupId>
             <artifactId>mystem-scala</artifactId>
-            <version>0.1.5</version>
+            <version>0.1.6</version>
         </dependency>
         <dependency>
             <groupId>org.xerial</groupId>
